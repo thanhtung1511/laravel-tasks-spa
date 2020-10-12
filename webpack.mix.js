@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const config = require('./webpack.config');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,17 +12,10 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        require('postcss-import'),
-        require('tailwindcss'),
-    ])
-    .webpackConfig({
-        resolve: {
-            alias: {
-                '@': path.resolve(__dirname, 'resources/js/src'),
-                '@assets': path.resolve(__dirname, 'resources/assets'),
-                '@sass': path.resolve(__dirname, 'resources/sass')
-            }
-        }
-    });
+
+mix.js('resources/js/app.js', 'public/js').
+  postCss('resources/css/app.css', 'public/css', [
+    require('postcss-import'),
+    require('tailwindcss'),
+  ]).
+  webpackConfig(config);

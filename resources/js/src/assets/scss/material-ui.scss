@@ -1,0 +1,61 @@
+
+//variables and mixins
+@import "components/variables";
+@import "components/mixins";
+@import "components/shadows";
+
+// Core CSS
+@import "components/typography";
+@import "components/sidebar-and-main-panel";
+@import "components/buttons";
+@import "components/badges";
+@import "components/misc";
+@import "components/inputs";
+@import "components/forms";
+@import "components/alerts";
+@import "components/tables";
+@import "components/collapse";
+@import "components/layout";
+@import "components/checkboxes";
+@import "components/fixed-plugin";
+@import "components/radios";
+@import "components/autocomplete";
+@import "components/rtl";
+@import "components/togglebutton";
+@import "components/pagination";
+@import "components/pills";
+@import "components/pages";
+@import "components/select";
+@import "components/fileinput";
+@import "components/fixed-plugin";
+@import "components/progress";
+@import "components/tags";
+@import "components/dialogs";
+@import "components/timeline";
+@import "components/info-areas";
+@import "components/headers";
+@import "components/navbars";
+@import "components/popups";
+@import "components/footers";
+
+// Fancy Stuff
+@import "components/dropdown";
+@import "components/tabs";
+@import "components/chartist";
+@import "components/responsive";
+
+@import "components/cards";
+@import "components/cards/card-product";
+@import "components/cards/card-pricing";
+@import "components/cards/card-login";
+@import "components/cards/card-profile";
+@import "components/cards/card-testimonials";
+@import "components/cards/card-global-sales";
+@import "components/cards/card-signup";
+@import "components/cards/card-tabs";
+
+//plugin css
+@import "components/plugins/perfect-scrollbar";
+@import "components/plugins/plugin-nouislider";
+@import "components/plugins/wizard-card";
+@import "components/plugins/animate";

@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\Api\LoginController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\{LoginController, ProfileController, TaskController, UserController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,10 +20,25 @@ Route::prefix('auth')->group(
     }
 );
 
-Route::middleware('auth:api')->get(
-    '/user',
-    function (Request $request) {
-        return $request->user();
+Route::middleware('auth:api')->group(
+    function () {
+        Route::prefix('auth')->group(
+            function () {
+                Route::get('/me', ProfileController::class);
+            }
+        );
+        Route::prefix('users')->group(
+            function () {
+                Route::get('/', [UserController::class, 'index']);
+            }
+        );
+        Route::prefix('tasks')->group(
+            function () {
+                Route::get('/', [TaskController::class, 'index']);
+                Route::post('/', [TaskController::class, 'store']);
+                Route::put('/{task}/complete', [TaskController::class, 'complete']);
+            }
+        );
     }
 );
 

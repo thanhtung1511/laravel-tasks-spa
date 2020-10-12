@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AuthenticateUser;
+use App\Http\Requests\Api\AuthenticateUser;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +20,7 @@ class LoginController extends Controller
         return response()->json(
             [
                 'token' => $token,
-                'token_type' => 'bearer',
-                'expires_in' => Auth::factory()->getTTL() * 60,
+                'expired' => now()->addSeconds(Auth::factory()->getTTL() * 60)->format('U'),
             ],
             Response::HTTP_OK
         );

@@ -29,13 +29,26 @@ class UserTableSeeder extends Seeder
                     'email' => 'admin@admin.com',
                     'password' => Hash::make('admin', []),
                     'email_verified_at' => now(),
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
                 [
                     'id' => 2,
-                    'name' => 'User',
+                    'name' => 'Jane Doe',
                     'email' => 'user@user.com',
                     'password' => Hash::make('default', []),
                     'email_verified_at' => now(),
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ],
+                [
+                    'id' => 3,
+                    'name' => 'John Doe',
+                    'email' => 'john@user.com',
+                    'password' => Hash::make('default', []),
+                    'email_verified_at' => now(),
+                    'created_at' => now(),
+                    'updated_at' => now(),
                 ],
             ];
         User::insert($users);

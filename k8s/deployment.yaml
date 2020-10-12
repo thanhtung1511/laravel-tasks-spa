@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tasks-spa-deployment
+  namespace: default
+  labels:
+    app: tasks-spa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tasks-spa
+  template:
+    metadata:
+      labels:
+        app: tasks-spa
+    spec:
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+      containers:
+        - name: tasks-spa-container
+          image: http-server:v1
+          ports:
+            - containerPort: 8080
+              name: "bis-port"
+              protocol: TCP
+          volumeMounts:
+            - name: tasks-spa-storage
+              mountPath: "/var/www/html"
+      restartPolicy: Always
+      volumes:
+        - name: tasks-spa-storage
+          persistentVolumeClaim:
+            claimName: tasks-spa-claim

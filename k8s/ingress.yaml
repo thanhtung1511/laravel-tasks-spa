@@ -1,0 +1,35 @@
+#apiVersion: networking.k8s.io/v1beta1
+##apiVersion: extensions/v1beta1
+#kind: Ingress
+#metadata:
+#  annotations:
+#    kubernetes.io/ingress.class: "traefik"
+#    traefik.ingress.kubernetes.io/router.entrypoints: web
+#  name: tasks-spa-ing
+#  namespace: default
+#
+#spec:
+#  rules:
+#    - host: tasks.local
+#      http:
+#        paths:
+#          - backend:
+#              serviceName: tasks-spa
+#              servicePort: 8080
+#            path: "/"
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: tasks-spa-route
+  namespace: default
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`tasks.local`)
+      kind: Rule
+      services:
+        - name: tasks-spa
+          port: 8080
+

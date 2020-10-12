@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthenticateUser extends FormRequest
+class TaskStore extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class AuthenticateUser extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return $this->user()->isAdmin();
     }
 
     /**
@@ -24,8 +24,8 @@ class AuthenticateUser extends FormRequest
     public function rules()
     {
         return [
-            'email' => ['required', 'email',],
-            'password' => ['required', 'string',],
+            'name' => ['required', 'string'],
+            'assignee' => ['required', 'exists:App\Models\User,id'],
         ];
     }
 }
